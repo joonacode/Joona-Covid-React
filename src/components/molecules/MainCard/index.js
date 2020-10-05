@@ -4,9 +4,11 @@ import CountUp from 'react-countup'
 import { BiStats } from 'react-icons/bi'
 import { Spinner } from '../../atoms'
 
-const MainCard = ({ title, isLoading, cases, recovered, deaths }) => {
+const MainCard = ({ title, isLoading, cases, recovered, deaths, isTotal }) => {
   return (
-    <div className='card main-card'>
+    <div
+      className={`card main-card${isTotal ? ' border-red' : ' border-blue'}`}
+    >
       <div className='card-header d-flex justify-content-between align-items-center'>
         <h5 className='card-header-title font-16 text-muted'>
           {isLoading ? <Spinner /> : title}

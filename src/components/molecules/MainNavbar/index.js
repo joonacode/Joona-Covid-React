@@ -1,14 +1,12 @@
 import React from 'react'
-import { BiCaretRightCircle } from 'react-icons/bi'
+import { BiCaretRightCircle, BiPhone } from 'react-icons/bi'
 
 const MainNavbar = () => {
   return (
     <>
       <nav className='navbar py-3 navbar-expand-md navbar-dark bg-info sticky-top'>
         <div className='container'>
-          <span className='navbar-brand font-weight-bold'>
-            Covid-19 Statistic
-          </span>
+          <span className='navbar-brand font-weight-bold'>JoonaCovid</span>
           <button
             className='navbar-toggler d-lg-none'
             type='button'
@@ -27,10 +25,13 @@ const MainNavbar = () => {
                 Bagaimana melindungi diri sendiri
               </a>
               <button
-                className='btn btn-primary px-4 shadow my-2 my-sm-0'
+                className='btn btn-success px-4 shadow-sm my-2 my-sm-0 rounded'
                 type='button'
               >
-                Kamu sakit ?
+                <span className='mr-1 '>
+                  <BiPhone size='22px' />
+                </span>{' '}
+                Call Center 119
               </button>
             </div>
           </div>

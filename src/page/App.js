@@ -1,8 +1,15 @@
-// import Axios from 'axios'
 import React, { Component } from 'react'
-import { MainCard, MainChart, MainFooter, MainHeader } from '../components'
+import {
+  MainCard,
+  MainChart,
+  MainFooter,
+  MainHeader,
+  Spinner,
+  TableCountry,
+} from '../components'
 import SelectSearch from 'react-select-search'
 import './App.css'
+import Moment from 'react-moment'
 import Axios from 'axios'
 class App extends Component {
   state = {
@@ -33,14 +40,23 @@ class App extends Component {
     },
     detailCountry: {
       flag: null,
-      cases: 0,
-      deaths: 0,
-      recovered: 0,
+      countryName: null,
+      totalCases: 0,
+      totalDeaths: 0,
+      totalRecovered: 0,
+      todayCases: 0,
+      todayDeaths: 0,
+      todayRecovered: 0,
       isLoading: false,
       lastUpdate: null,
     },
     dataCountry: {
       countries: [],
+      isLoading: false,
+    },
+    allDataCountries: {
+      dataCountries: [],
+      cpDataCountries: [],
       isLoading: false,
     },
   }
@@ -72,7 +88,28 @@ class App extends Component {
         console.log(err.response)
       })
   }
-
+  fetchAllDataCountries() {
+    this.setState({
+      allDataCountries: { isLoading: true },
+    })
+    Axios.get('https://corona.lmao.ninja/v2/countries?yesterday&sort')
+      .then((response) => {
+        const data = response.data
+        this.setState({
+          allDataCountries: {
+            dataCountries: data,
+            cpDataCountries: data,
+            isLoading: false,
+          },
+        })
+      })
+      .catch((err) => {
+        this.setState({
+          allDataCountries: { isLoading: false },
+        })
+        console.log(err.response)
+      })
+  }
   fetchChartGlobal() {
     this.setState({
       chartGlobal: {
@@ -174,9 +211,13 @@ class App extends Component {
         this.setState({
           detailCountry: {
             flag: detail.countryInfo.flag,
-            cases: detail.cases,
-            deaths: detail.deaths,
-            recovered: detail.recovered,
+            countryName: detail.country,
+            totalCases: detail.cases,
+            totalDeaths: detail.deaths,
+            totalRecovered: detail.recovered,
+            todayCases: detail.todayCases,
+            todayDeaths: detail.todayDeaths,
+            todayRecovered: detail.todayRecovered,
             lastUpdate: detail.updated,
             isLoading: false,
           },
@@ -229,6 +270,28 @@ class App extends Component {
     this.fetchChartCountry(e)
     this.fetchDetailCountry(e)
   }
+  handleSearchCountries(e) {
+    const valueSearch = e.target.value.toLowerCase()
+    if (!valueSearch) {
+      const backup = this.state.allDataCountries.cpDataCountries
+      this.setState({
+        allDataCountries: {
+          ...this.state.allDataCountries,
+          dataCountries: backup,
+        },
+      })
+    } else {
+      const resultSearch = this.state.allDataCountries.cpDataCountries.filter(
+        (item) => item.country.toLowerCase().match(valueSearch),
+      )
+      this.setState({
+        allDataCountries: {
+          ...this.state.allDataCountries,
+          dataCountries: resultSearch,
+        },
+      })
+    }
+  }
 
   componentDidMount() {
     this.fetchWorldCases()
@@ -236,6 +299,7 @@ class App extends Component {
     this.fetchChartCountry()
     this.fetchAllCountries()
     this.fetchDetailCountry()
+    this.fetchAllDataCountries()
   }
 
   render() {
@@ -261,10 +325,23 @@ class App extends Component {
               />
             </div>
             <div className='col-md-4 mb-4'>
+              <p className='text-semi'>
+                Terakhir diperbarui:{' '}
+                <span className='text-danger font-weight-bold'>
+                  {this.state.chartGlobal.isLoading ? (
+                    '....'
+                  ) : (
+                    <Moment format='DD MMM YYYY hh:mm'>
+                      {this.state.worldCases.lastUpdate}
+                    </Moment>
+                  )}
+                </span>
+              </p>
               <div className='row'>
                 <div className='col-md-12 mb-3'>
                   <MainCard
-                    title='Statistik Global'
+                    isTotal
+                    title='Statistik Total - Dunia'
                     isLoading={this.state.worldCases.isLoading}
                     cases={this.state.worldCases.totalCase}
                     recovered={this.state.worldCases.totalRecovered}
@@ -273,7 +350,7 @@ class App extends Component {
                 </div>
                 <div className='col-md-12'>
                   <MainCard
-                    title='Statistik Hari Ini Global'
+                    title='Statistik Hari Ini - Dunia'
                     isLoading={this.state.worldCases.isLoading}
                     cases={this.state.worldCases.todayCase}
                     recovered={this.state.worldCases.todayRecovered}
@@ -309,13 +386,60 @@ class App extends Component {
               />
             </div>
             <div className='col-md-4 mb-4'>
-              <MainCard
-                title='Ringkasan Country'
-                isLoading={this.state.detailCountry.isLoading}
-                cases={this.state.detailCountry.cases}
-                recovered={this.state.detailCountry.recovered}
-                deaths={this.state.detailCountry.deaths}
-              />
+              <div className='row'>
+                <p className='text-semi'>
+                  Terakhir diperbarui:{' '}
+                  <span className='text-danger font-weight-bold'>
+                    {this.state.detailCountry.isLoading ? (
+                      '....'
+                    ) : (
+                      <Moment format='DD MMM YYYY hh:mm'>
+                        {this.state.detailCountry.lastUpdate}
+                      </Moment>
+                    )}
+                  </span>
+                </p>
+                <div className='col-md-12 mb-3'>
+                  <MainCard
+                    isTotal
+                    title={`Statistik Total - ${this.state.detailCountry.countryName}`}
+                    isLoading={this.state.detailCountry.isLoading}
+                    cases={this.state.detailCountry.totalCases}
+                    recovered={this.state.detailCountry.totalRecovered}
+                    deaths={this.state.detailCountry.totalDeaths}
+                  />
+                </div>
+                <div className='col-md-12'>
+                  <MainCard
+                    title={`Statistik Hari Ini - ${this.state.detailCountry.countryName}`}
+                    isLoading={this.state.detailCountry.isLoading}
+                    cases={this.state.detailCountry.todayCases}
+                    recovered={this.state.detailCountry.todayRecovered}
+                    deaths={this.state.detailCountry.todayDeaths}
+                  />
+                </div>
+              </div>
+            </div>
+            <div className='col-md-12 mt-4 shadow-sm py-3'>
+              <h5 className='text-semi mb-3'>Data Per Negara</h5>
+              <div className='form-group'>
+                <input
+                  type='text'
+                  placeholder='Cari berdasarkan nama negara...'
+                  className='form-control'
+                  onChange={(e) => this.handleSearchCountries(e)}
+                />
+              </div>
+              {this.state.allDataCountries.isLoading ? (
+                <div className='py-5'>
+                  <Spinner />
+                </div>
+              ) : (
+                <TableCountry
+                  countries={this.state.allDataCountries.dataCountries}
+                  isLoading={this.state.allDataCountries.isLoading}
+                />
+              )}
             </div>
           </div>
         </div>

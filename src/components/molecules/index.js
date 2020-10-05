@@ -3,6 +3,7 @@ import MainHeader from './MainHeader'
 import MainFooter from './MainFooter'
 import MainCard from './MainCard'
 import MainChart from './MainChart'
+import TableCountry from './TableCountry'
 import CardCaseHeader from './CardCaseHeader'
 
 export {
@@ -11,5 +12,6 @@ export {
   MainCard,
   MainHeader,
   CardCaseHeader,
-  MainChart
+  MainChart,
+  TableCountry
 }

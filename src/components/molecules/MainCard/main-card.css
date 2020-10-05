@@ -3,9 +3,16 @@
 }
 
 .main-card {
-  border: 0 !important;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px !important;
+}
+
+.border-red {
+  border-bottom: 10px solid rgba(255, 0, 0, 0.699) !important;
+}
+
+.border-blue {
+  border-bottom: 10px solid rgba(108, 159, 236, 0.74) !important;
 }
 
 .card-header {

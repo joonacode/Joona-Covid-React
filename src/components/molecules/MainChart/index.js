@@ -53,7 +53,11 @@ function MainChart({ cases, recovered, deaths, isLoading, keyChart, title }) {
       yAxes: [
         {
           ticks: {
-            min: 0,
+            callback: function (label, index, labels) {
+              return label.toLocaleString(navigator.language, {
+                minimumFractionDigits: 0,
+              })
+            },
           },
         },
       ],
@@ -73,6 +77,7 @@ function MainChart({ cases, recovered, deaths, isLoading, keyChart, title }) {
           <Spinner size='lg' />
         ) : (
           <div className='App'>
+            <p className='text-semi font-16'>Data 30 hari terakhir</p>
             <Line data={data} options={options} />
           </div>
         )}
