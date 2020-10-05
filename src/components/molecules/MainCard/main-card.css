@@ -1,0 +1,13 @@
+.card-header-title {
+  margin-bottom: 0;
+}
+
+.main-card {
+  border: 0 !important;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  border-radius: 10px !important;
+}
+
+.card-header {
+  background-color: transparent !important;
+}

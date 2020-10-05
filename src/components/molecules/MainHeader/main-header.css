@@ -1,0 +1,25 @@
+#header {
+  padding: 65px 0 100px 0;
+}
+
+.bg-header {
+  background-color: #17a2b8 !important;
+}
+
+.header-title {
+  font-size: 50px !important;
+  color: white;
+}
+
+.list-header-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.icon-header {
+  border-radius: 50%;
+  background-color: #666;
+  color: white;
+  padding: 20px;
+}
