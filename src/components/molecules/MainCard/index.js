@@ -33,7 +33,7 @@ const MainCard = ({ title, isLoading, cases, recovered, deaths, isTotal }) => {
               <small className='d-block'> Total Kasus </small>
             </div>
             <div className='row mt-4'>
-              <div className='col-md-6'>
+              <div className='col-md-6 mb-3'>
                 <div className='text-center'>
                   <CountUp
                     className='font-18 font-weight-bold text-success'
@@ -43,7 +43,7 @@ const MainCard = ({ title, isLoading, cases, recovered, deaths, isTotal }) => {
                   <small className='d-block'> Total Pulih </small>
                 </div>
               </div>
-              <div className='col-md-6'>
+              <div className='col-md-6 mb-3'>
                 <div className='text-center'>
                   <CountUp
                     className='font-18 font-weight-bold text-danger'

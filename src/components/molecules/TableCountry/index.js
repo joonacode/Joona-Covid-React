@@ -1,5 +1,6 @@
 import React from 'react'
 import { Spinner } from '../../atoms'
+import NumberFormat from 'react-number-format'
 
 function TableCountry({ countries, isLoading }) {
   return (
@@ -49,17 +50,46 @@ function TableCountry({ countries, isLoading }) {
                   <tr key={i}>
                     <th scope='row'>{i + 1}</th>
                     <td>{country.country}</td>
-                    <td>{country.cases}</td>
-                    <td>{country.todayCases}</td>
-                    <td>{country.deaths}</td>
+                    <td>
+                      <NumberFormat
+                        value={country.cases}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                      />
+                    </td>
+                    <td>
+                      <NumberFormat
+                        value={country.todayCases}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                      />
+                    </td>
+                    <td>
+                      {' '}
+                      <NumberFormat
+                        value={country.deaths}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                      />
+                    </td>
                     <td
                       className={`${
                         country.todayDeaths > 0 ? 'bg-danger text-white' : ''
                       }`}
                     >
-                      {country.todayDeaths}
+                      <NumberFormat
+                        value={country.todayDeaths}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                      />
                     </td>
-                    <td>{country.recovered}</td>
+                    <td>
+                      <NumberFormat
+                        value={country.recovered}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                      />
+                    </td>
                     <td
                       className={`${
                         country.todayRecovered > 0
@@ -67,9 +97,19 @@ function TableCountry({ countries, isLoading }) {
                           : ''
                       }`}
                     >
-                      {country.todayRecovered}
+                      <NumberFormat
+                        value={country.todayRecovered}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                      />
                     </td>
-                    <td>{country.active}</td>
+                    <td>
+                      <NumberFormat
+                        value={country.active}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                      />
+                    </td>
                   </tr>
                 )
               })

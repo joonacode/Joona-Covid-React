@@ -1,6 +1,6 @@
 import React from 'react'
-import { BiCaretRightCircle, BiPhone } from 'react-icons/bi'
-
+import { BiCaretRightCircle, BiPhone, BiMenu } from 'react-icons/bi'
+import './main-navbar.css'
 const MainNavbar = () => {
   return (
     <>
@@ -15,9 +15,11 @@ const MainNavbar = () => {
             aria-controls='collapsibleNavId'
             aria-expanded='false'
             aria-label='Toggle navigation'
-          ></button>
+          >
+            <BiMenu size='28px' />
+          </button>
           <div className='collapse navbar-collapse' id='collapsibleNavId'>
-            <div className='form-inline ml-auto my-2 my-lg-0'>
+            <div className='left-navbar ml-auto my-2 my-lg-0'>
               <a href='/' className='mr-4 text-white'>
                 <span className='mr-1 '>
                   <BiCaretRightCircle size='30px' />
@@ -25,7 +27,7 @@ const MainNavbar = () => {
                 Bagaimana melindungi diri sendiri
               </a>
               <button
-                className='btn btn-success px-4 shadow-sm my-2 my-sm-0 rounded'
+                className='btn btn-success call px-4 shadow-sm my-2 my-sm-0 rounded'
                 type='button'
               >
                 <span className='mr-1 '>

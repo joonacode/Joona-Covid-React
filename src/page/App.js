@@ -314,7 +314,7 @@ class App extends Component {
         />
         <div className='container mt-5'>
           <div className='row'>
-            <div className='col-md-8 mb-4'>
+            <div className='col-lg-8 col-md-12 mb-4'>
               <MainChart
                 cases={this.state.chartGlobal.cases}
                 recovered={this.state.chartGlobal.recovered}
@@ -324,7 +324,7 @@ class App extends Component {
                 title='Data Global'
               />
             </div>
-            <div className='col-md-4 mb-4'>
+            <div className='col-lg-4 col-md-12 mb-4'>
               <p className='text-semi'>
                 Terakhir diperbarui:{' '}
                 <span className='text-danger font-weight-bold'>
@@ -362,7 +362,7 @@ class App extends Component {
             <div className='col-md-12 mt-3 mb-4 border-top pt-4'>
               <h4 className='text-semi'> Statistik Berdasarkan Negara </h4>
             </div>
-            <div className='col-md-8 mb-4'>
+            <div className='col-lg-8 col-md-12 mb-4'>
               {this.state.dataCountry.isLoading ? (
                 'Loading...'
               ) : (
@@ -385,21 +385,21 @@ class App extends Component {
                 title={this.state.chartCountry.country}
               />
             </div>
-            <div className='col-md-4 mb-4'>
+            <div className='col-lg-4 col-md-12 mb-4'>
               <div className='row'>
-                <p className='text-semi'>
-                  Terakhir diperbarui:{' '}
-                  <span className='text-danger font-weight-bold'>
-                    {this.state.detailCountry.isLoading ? (
-                      '....'
-                    ) : (
-                      <Moment format='DD MMM YYYY hh:mm'>
-                        {this.state.detailCountry.lastUpdate}
-                      </Moment>
-                    )}
-                  </span>
-                </p>
                 <div className='col-md-12 mb-3'>
+                  <p className='text-semi'>
+                    Terakhir diperbarui:{' '}
+                    <span className='text-danger font-weight-bold'>
+                      {this.state.detailCountry.isLoading ? (
+                        '....'
+                      ) : (
+                        <Moment format='DD MMM YYYY hh:mm'>
+                          {this.state.detailCountry.lastUpdate}
+                        </Moment>
+                      )}
+                    </span>
+                  </p>
                   <MainCard
                     isTotal
                     title={`Statistik Total - ${this.state.detailCountry.countryName}`}

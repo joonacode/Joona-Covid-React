@@ -16,21 +16,23 @@ const MainHeader = ({ totalCase, recovered, death, isLoading, lastUpdate }) => {
         <div className='container'>
           <div id='header'>
             <div className='row'>
-              <div className='col-md-5 pr-5'>
+              <div className='col-lg-5 col-md-4 pr-lg-5 pr-md-4 image-header-section'>
+                <h1 className='header-title text-center d-none title-image mb-5'>
+                  Bantu Mencegah Penyebaran Dengan Tetap Diam Dirumah
+                </h1>
                 <img
                   src={FightImage}
                   alt='imageCorona'
-                  className='img-fluid w-100 h-auto '
+                  className='img-fluid w-100 h-auto img-doctor'
                 />
               </div>
-              <div className='col-md-7'>
-                <h1 className='header-title'>
-                  Bantu Mencegah Penyebaran Dengan Tetap <br />
-                  Diam Dirumah
+              <div className='col-lg-7 col-md-8'>
+                <h1 className='header-title header-title-right'>
+                  Bantu Mencegah Penyebaran Dengan Tetap Diam Dirumah
                 </h1>
                 <div className='mt-5 text-white'>
                   <div className='row '>
-                    <div className='col-md-6 mb-4'>
+                    <div className='col-lg-6 col-md-12 mb-4'>
                       <p className='mb-0 font-18'>Kasus di seluruh dunia</p>
                       <p className='mb-3 font-15'>
                         Terakhir diperbarui:{' '}
@@ -41,7 +43,11 @@ const MainHeader = ({ totalCase, recovered, death, isLoading, lastUpdate }) => {
                       <Spinner />
                     ) : (
                       <>
-                        <CardCaseHeader title='Total Kasus' total={totalCase}>
+                        <CardCaseHeader
+                          title='Total Kasus'
+                          isCase
+                          total={totalCase}
+                        >
                           <RiVirusFill size='28px' />
                         </CardCaseHeader>
                         <CardCaseHeader title='Pulih' total={recovered}>
