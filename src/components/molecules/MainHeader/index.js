@@ -36,7 +36,9 @@ const MainHeader = ({ totalCase, recovered, death, isLoading, lastUpdate }) => {
                       </p>
                     </div>
                     {isLoading ? (
-                      <Spinner />
+                      <div className='col-md-12'>
+                        <Spinner />
+                      </div>
                     ) : (
                       <>
                         <CardCaseHeader

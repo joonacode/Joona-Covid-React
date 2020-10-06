@@ -2,6 +2,7 @@ import React from 'react'
 import { BiStats } from 'react-icons/bi'
 import { Line } from 'react-chartjs-2'
 import { Spinner } from '../../atoms'
+import Moment from 'react-moment'
 
 function MainChart({ cases, recovered, deaths, isLoading, keyChart, title }) {
   const data = {
@@ -13,7 +14,7 @@ function MainChart({ cases, recovered, deaths, isLoading, keyChart, title }) {
         fill: true,
         backgroundColor: 'rgba(130, 75, 192, 0.2)',
         borderColor: 'rgba(130, 75, 192, 1)',
-        pointRadius: 2,
+
         borderWidth: 1,
         lineTension: 0,
       },
@@ -23,7 +24,7 @@ function MainChart({ cases, recovered, deaths, isLoading, keyChart, title }) {
         fill: true,
         backgroundColor: 'rgba(192, 75, 75, 0.2)',
         borderColor: 'rgba(192, 75, 75, 1)',
-        pointRadius: 2,
+
         borderWidth: 1,
         lineTension: 0,
       },
@@ -33,7 +34,7 @@ function MainChart({ cases, recovered, deaths, isLoading, keyChart, title }) {
         fill: true,
         backgroundColor: 'rgba(95, 192, 75, 0.2)',
         borderColor: 'rgba(95, 192, 75, 1)',
-        pointRadius: 2,
+
         borderWidth: 1,
         lineTension: 0,
       },
@@ -77,7 +78,16 @@ function MainChart({ cases, recovered, deaths, isLoading, keyChart, title }) {
           <Spinner size='lg' />
         ) : (
           <div className='App'>
-            <p className='text-semi font-16'>Data 30 hari terakhir</p>
+            <p className='text-semi font-13'>
+              Dari:{' '}
+              <span className='font-weight-bold'>
+                <Moment format='DD MMM YYYY hh:mm'>{keyChart[0]}</Moment> -{' '}
+                <Moment format='DD MMM YYYY hh:mm'>
+                  {keyChart[keyChart.length - 1]}
+                </Moment>
+                {' (Kumulatif)'}
+              </span>
+            </p>
             <Line data={data} options={options} />
           </div>
         )}

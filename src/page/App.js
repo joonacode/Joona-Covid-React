@@ -6,6 +6,7 @@ import {
   MainHeader,
   Spinner,
   TableCountry,
+  TableProv,
 } from '../components'
 import SelectSearch from 'react-select-search'
 import './App.css'
@@ -57,6 +58,11 @@ class App extends Component {
     allDataCountries: {
       dataCountries: [],
       cpDataCountries: [],
+      isLoading: false,
+    },
+    dataProv: {
+      allProv: [],
+      cpAllProv: [],
       isLoading: false,
     },
   }
@@ -159,7 +165,7 @@ class App extends Component {
     Axios.get(
       `https://corona.lmao.ninja/v2/historical/${
         iso ? iso : 'indonesia'
-      }?lastdays=30`,
+      }?lastdays=all`,
     )
       .then((response) => {
         const chartGlobal = response.data.timeline
@@ -204,7 +210,7 @@ class App extends Component {
     Axios.get(
       `https://corona.lmao.ninja/v2/countries/${
         iso ? iso : 'ID'
-      }?yesterday=true&strict=true&query`,
+      }?yesterday=false&strict=true&query`,
     )
       .then((response) => {
         const detail = response.data
@@ -265,6 +271,33 @@ class App extends Component {
         console.log(err.response)
       })
   }
+  fetchProvinsiId() {
+    this.setState({
+      dataProv: {
+        isLoading: true,
+      },
+    })
+    Axios.get(
+      'https://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi',
+    )
+      .then((response) => {
+        this.setState({
+          dataProv: {
+            allProv: response.data,
+            cpAllProv: response.data,
+            isLoading: false,
+          },
+        })
+      })
+      .catch((err) => {
+        this.setState({
+          dataProv: {
+            isLoading: false,
+          },
+        })
+        console.log(err.response)
+      })
+  }
 
   handleChangeCountry(e) {
     this.fetchChartCountry(e)
@@ -292,6 +325,28 @@ class App extends Component {
       })
     }
   }
+  handleSearchProvincies(e) {
+    const valueSearch = e.target.value.toLowerCase()
+    if (!valueSearch) {
+      const backup = this.state.dataProv.cpAllProv
+      this.setState({
+        dataProv: {
+          ...this.state.dataProv,
+          allProv: backup,
+        },
+      })
+    } else {
+      const resultSearch = this.state.dataProv.cpAllProv.filter((item) =>
+        item.provinsi.toLowerCase().match(valueSearch),
+      )
+      this.setState({
+        dataProv: {
+          ...this.state.dataProv,
+          allProv: resultSearch,
+        },
+      })
+    }
+  }
 
   componentDidMount() {
     this.fetchWorldCases()
@@ -300,6 +355,7 @@ class App extends Component {
     this.fetchAllCountries()
     this.fetchDetailCountry()
     this.fetchAllDataCountries()
+    this.fetchProvinsiId()
   }
 
   render() {
@@ -421,7 +477,28 @@ class App extends Component {
               </div>
             </div>
             <div className='col-md-12 mt-4 shadow-sm py-3'>
-              <h5 className='text-semi mb-3'>Data Per Negara</h5>
+              <h5 className='text-semi mb-3'>Kasus di provinsi Indonesia</h5>
+              <div className='form-group'>
+                <input
+                  type='text'
+                  placeholder='Cari berdasarkan nama provinsi...'
+                  className='form-control'
+                  onChange={(e) => this.handleSearchProvincies(e)}
+                />
+              </div>
+              {this.state.dataProv.isLoading ? (
+                <div className='py-5'>
+                  <Spinner />
+                </div>
+              ) : (
+                <TableProv
+                  provincies={this.state.dataProv.allProv}
+                  isLoading={this.state.dataProv.isLoading}
+                />
+              )}
+            </div>
+            <div className='col-md-12 mt-5 shadow-sm py-3'>
+              <h5 className='text-semi mb-3'>List negara terdampak covid-19</h5>
               <div className='form-group'>
                 <input
                   type='text'

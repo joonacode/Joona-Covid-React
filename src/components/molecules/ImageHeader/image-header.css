@@ -196,20 +196,20 @@
 
   .virus1 {
     width: 50px;
-    left: 260px;
-    bottom: 110px;
+    left: 230px;
+    bottom: 120px;
   }
 
   .virus2 {
-    width: 70px;
+    width: 50px;
     left: 200px;
-    bottom: 250px;
+    bottom: 280px;
   }
 
   .virus3 {
     width: 60px;
-    left: 190px;
-    top: 10px;
+    left: 180px;
+    top: -30px;
   }
 
   .virus4 {
@@ -226,7 +226,7 @@
 
   .virus6 {
     width: 50px;
-    right: 120px;
+    right: 80px;
   }
 
   .virus7 {

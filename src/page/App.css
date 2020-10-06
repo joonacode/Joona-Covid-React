@@ -82,7 +82,7 @@ a {
 }
 
 .select-search {
-  width: 300px;
+  width: 100%;
   position: relative;
   font-family: 'Nunito Sans', sans-serif;
   box-sizing: border-box;
@@ -237,8 +237,7 @@ a {
   overflow: hidden;
 }
 
-.select-search:not(.is-loading):not(.select-search--multiple)
-  .select-search__value::after {
+.select-search:not(.is-loading):not(.select-search--multiple) .select-search__value::after {
   transform: rotate(45deg);
   border-right: 1px solid #000;
   border-bottom: 1px solid #000;

@@ -20,11 +20,14 @@ const MainNavbar = () => {
           </button>
           <div className='collapse navbar-collapse' id='collapsibleNavId'>
             <div className='left-navbar ml-auto my-2 my-lg-0'>
-              <a href='/' className='mr-4 text-white'>
+              <a
+                href='https://www.covid19.go.id/tanya-jawab/'
+                className='mr-4 text-white'
+              >
                 <span className='mr-1 '>
                   <BiCaretRightCircle size='30px' />
                 </span>
-                Bagaimana melindungi diri sendiri
+                Bagaimana melindungi diri
               </a>
               <button
                 className='btn btn-success call px-4 shadow-sm my-2 my-sm-0 rounded'

@@ -2,7 +2,7 @@ import React from 'react'
 import { Spinner } from '../../atoms'
 import NumberFormat from 'react-number-format'
 
-function TableCountry({ countries, isLoading }) {
+function TableCountry({ provincies, isLoading }) {
   return (
     <>
       <div
@@ -16,28 +16,19 @@ function TableCountry({ countries, isLoading }) {
                 #
               </th>
               <th className='sticky-top bg-white' scope='col'>
-                Negara
+                Provinsi
               </th>
               <th className='sticky-top bg-white' scope='col'>
-                Total Kasus
+                Kasus
               </th>
               <th className='sticky-top bg-white' scope='col'>
-                Kasus Hari Ini
+                Dirawat
               </th>
               <th className='sticky-top bg-white' scope='col'>
-                Total Meninggal
+                Sembuh
               </th>
               <th className='sticky-top bg-white' scope='col'>
-                Meninggal Hari Ini
-              </th>
-              <th className='sticky-top bg-white' scope='col'>
-                Total Pulih
-              </th>
-              <th className='sticky-top bg-white' scope='col'>
-                Pulih Hari Ini
-              </th>
-              <th className='sticky-top bg-white' scope='col'>
-                Kasus Aktif
+                Meninggal
               </th>
             </tr>
           </thead>
@@ -45,22 +36,22 @@ function TableCountry({ countries, isLoading }) {
             {isLoading ? (
               <Spinner />
             ) : (
-              countries.length > 0 &&
-              countries.map((country, i) => {
+              provincies.length > 0 &&
+              provincies.map((provinci, i) => {
                 return (
                   <tr key={i}>
                     <th scope='row'>{i + 1}</th>
-                    <td>{country.country}</td>
+                    <td>{provinci.provinsi}</td>
                     <td>
                       <NumberFormat
-                        value={country.cases}
+                        value={provinci.kasus}
                         displayType={'text'}
                         thousandSeparator={true}
                       />
                     </td>
                     <td>
                       <NumberFormat
-                        value={country.todayCases}
+                        value={provinci.dirawat}
                         displayType={'text'}
                         thousandSeparator={true}
                       />
@@ -68,45 +59,14 @@ function TableCountry({ countries, isLoading }) {
                     <td>
                       {' '}
                       <NumberFormat
-                        value={country.deaths}
-                        displayType={'text'}
-                        thousandSeparator={true}
-                      />
-                    </td>
-                    <td
-                      className={`${
-                        country.todayDeaths > 0 ? 'bg-danger text-white' : ''
-                      }`}
-                    >
-                      <NumberFormat
-                        value={country.todayDeaths}
+                        value={provinci.sembuh}
                         displayType={'text'}
                         thousandSeparator={true}
                       />
                     </td>
                     <td>
                       <NumberFormat
-                        value={country.recovered}
-                        displayType={'text'}
-                        thousandSeparator={true}
-                      />
-                    </td>
-                    <td
-                      className={`${
-                        country.todayRecovered > 0
-                          ? 'bg-success text-white'
-                          : ''
-                      }`}
-                    >
-                      <NumberFormat
-                        value={country.todayRecovered}
-                        displayType={'text'}
-                        thousandSeparator={true}
-                      />
-                    </td>
-                    <td>
-                      <NumberFormat
-                        value={country.active}
+                        value={provinci.meninggal}
                         displayType={'text'}
                         thousandSeparator={true}
                       />
@@ -117,7 +77,7 @@ function TableCountry({ countries, isLoading }) {
             )}
           </tbody>
         </table>
-        {countries.length === 0 && (
+        {provincies.length === 0 && (
           <p className='text-center p-5 text-danger'>Data Tidak Ditemukan</p>
         )}
       </div>
