@@ -1,5 +1,4 @@
 import React from 'react'
-import { FightImage } from '../../../assets'
 import MainNavbar from '../MainNavbar'
 import { RiVirusFill } from 'react-icons/ri'
 import { GiHealthIncrease } from 'react-icons/gi'
@@ -8,6 +7,7 @@ import Moment from 'react-moment'
 import './main-header.css'
 import CardCaseHeader from '../CardCaseHeader'
 import { Spinner } from '../../atoms'
+import ImageHeader from '../ImageHeader'
 const MainHeader = ({ totalCase, recovered, death, isLoading, lastUpdate }) => {
   return (
     <div>
@@ -16,17 +16,13 @@ const MainHeader = ({ totalCase, recovered, death, isLoading, lastUpdate }) => {
         <div className='container'>
           <div id='header'>
             <div className='row'>
-              <div className='col-lg-5 col-md-4 pr-lg-5 pr-md-4 image-header-section'>
+              <div className='col-lg-5 col-md-4 image-header-section'>
                 <h1 className='header-title text-center d-none title-image mb-5'>
                   Bantu Mencegah Penyebaran Dengan Tetap Diam Dirumah
                 </h1>
-                <img
-                  src={FightImage}
-                  alt='imageCorona'
-                  className='img-fluid w-100 h-auto img-doctor'
-                />
+                <ImageHeader />
               </div>
-              <div className='col-lg-7 col-md-8'>
+              <div className='col-lg-7 pl-5 col-md-8' id='right-head'>
                 <h1 className='header-title header-title-right'>
                   Bantu Mencegah Penyebaran Dengan Tetap Diam Dirumah
                 </h1>

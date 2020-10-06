@@ -5,6 +5,7 @@ import MainCard from './MainCard'
 import MainChart from './MainChart'
 import TableCountry from './TableCountry'
 import CardCaseHeader from './CardCaseHeader'
+import ImageHeader from './ImageHeader'
 
 export {
   MainNavbar,
@@ -13,5 +14,6 @@ export {
   MainHeader,
   CardCaseHeader,
   MainChart,
-  TableCountry
+  TableCountry,
+  ImageHeader
 }

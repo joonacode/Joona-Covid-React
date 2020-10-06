@@ -1,0 +1,277 @@
+.img-virus {
+  position: absolute;
+}
+
+.virus1 {
+  right: 100px;
+  bottom: 100px;
+}
+
+.virus2 {
+  right: 60px;
+  bottom: 250px;
+}
+
+.virus3 {
+  left: 190px;
+  bottom: 350px;
+}
+
+.virus4 {
+  left: 260px;
+  bottom: 220px;
+}
+
+.virus5 {
+  right: 150px;
+  top: 10px;
+}
+
+.virus6 {
+  right: 40px;
+  top: -10px;
+}
+
+.virus7 {
+  right: 10px;
+  bottom: 170px;
+}
+
+.animate-virus1 {
+  animation: down-up 2s ease-in-out infinite alternate-reverse both;
+}
+
+.animate-virus2 {
+  animation: up-down 2.5s ease-in-out infinite alternate-reverse both;
+}
+
+.animate-virus3 {
+  animation: up-down 1.5s ease-in-out infinite alternate-reverse both;
+}
+
+.animate-virus4 {
+  animation: up-down 1s ease-in-out infinite alternate-reverse both;
+}
+
+.animate-virus5 {
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+.animate-virus6 {
+  animation: up-down 3s ease-in-out infinite alternate-reverse both;
+}
+
+.animate-virus7 {
+  animation: up-down 4s ease-in-out infinite alternate-reverse both;
+}
+
+
+@media screen and (max-width: 1199px) {
+  .virus1 {
+    width: 70px;
+  }
+
+  .animate-virus1 {
+    animation: down-up 2s ease-in-out infinite alternate-reverse both;
+  }
+
+  .virus2 {
+    width: 90px;
+  }
+
+  .virus3 {
+    width: 50px;
+  }
+
+  .virus4 {
+    width: 30px;
+    left: 200px
+  }
+
+  .virus5 {
+    width: 35px;
+  }
+
+  .virus6 {
+    width: 50px;
+  }
+
+  .virus7 {
+    width: 55px;
+    right: 80px
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .virus1 {
+    width: 40px;
+    left: 150px;
+    bottom: 50px;
+  }
+
+  #right-head {
+    padding-left: 15px !important;
+  }
+
+  .virus2 {
+    width: 50px;
+    bottom: 100px;
+    left: 130px
+  }
+
+  .virus3 {
+    width: 40px;
+    left: 100px;
+    top: 10px;
+  }
+
+  .virus4 {
+    width: 20px;
+    left: 120px;
+    bottom: 140px;
+  }
+
+  .virus5 {
+    width: 25px;
+  }
+
+  .virus6 {
+    width: 30px;
+  }
+
+  .virus7 {
+    width: 35px;
+    right: 80px
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .img-doctor {
+    padding: 0 20px !important;
+  }
+
+  .virus1 {
+    width: 80px;
+    left: 260px;
+    bottom: 110px;
+  }
+
+  .virus2 {
+    width: 100px;
+    left: 290px;
+    bottom: 250px;
+  }
+
+  .virus3 {
+    width: 60px;
+    left: 190px;
+    top: 10px;
+  }
+
+  .virus4 {
+    width: auto;
+    left: 30px;
+    bottom: 140px;
+  }
+
+  .virus5 {
+    width: auto;
+    left: 230px;
+    top: 90px;
+  }
+
+  .virus6 {
+    width: 50px;
+    right: 120px;
+  }
+
+  .virus7 {
+    width: 70px;
+    right: 100px
+  }
+
+}
+
+@media screen and (max-width: 440px) {
+
+  .virus1 {
+    width: 50px;
+    left: 260px;
+    bottom: 110px;
+  }
+
+  .virus2 {
+    width: 70px;
+    left: 200px;
+    bottom: 250px;
+  }
+
+  .virus3 {
+    width: 60px;
+    left: 190px;
+    top: 10px;
+  }
+
+  .virus4 {
+    width: auto;
+    left: 30px;
+    bottom: 140px;
+  }
+
+  .virus5 {
+    width: auto;
+    left: 230px;
+    top: 90px;
+  }
+
+  .virus6 {
+    width: 50px;
+    right: 120px;
+  }
+
+  .virus7 {
+    width: 70px;
+    right: 100px
+  }
+
+}
+
+@-webkit-keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateX(20px)
+  }
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateX(20px)
+  }
+}
+
+@-webkit-keyframes down-up {
+  0% {
+    transform: translateY(10px);
+  }
+
+  100% {
+    transform: translateX(20px)
+  }
+}
+
+@keyframes down-up {
+  0% {
+    transform: translateY(20px);
+  }
+
+  100% {
+    transform: translateX(-35px)
+  }
+}
