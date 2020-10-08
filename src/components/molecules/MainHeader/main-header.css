@@ -7,7 +7,7 @@
 }
 
 .header-title {
-  font-size: 50px !important;
+  font-size: 45px !important;
   color: white;
 }
 
@@ -30,6 +30,12 @@
   }
 }
 
+@media screen and (max-width: 991px) {
+  .header-title {
+    font-size: 30px !important;
+  }
+}
+
 
 @media screen and (max-width: 767px) {
   .header-title {
@@ -46,5 +52,11 @@
 
   #header {
     padding: 45px 0 100px 0 !important;
+  }
+}
+
+@media screen and (max-width: 501px) {
+  .header-title {
+    font-size: 25px !important;
   }
 }

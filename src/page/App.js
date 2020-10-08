@@ -11,7 +11,7 @@ import {
 import SelectSearch from 'react-select-search'
 import './App.css'
 import Moment from 'react-moment'
-import Axios from 'axios'
+import API from '../apis/Api'
 class App extends Component {
   state = {
     worldCases: {
@@ -71,7 +71,7 @@ class App extends Component {
     this.setState({
       worldCases: { isLoading: true },
     })
-    Axios.get('https://corona.lmao.ninja/v2/all')
+    API.getWorldCases()
       .then((response) => {
         const dataGlobal = response.data
         this.setState({
@@ -98,7 +98,7 @@ class App extends Component {
     this.setState({
       allDataCountries: { isLoading: true },
     })
-    Axios.get('https://corona.lmao.ninja/v2/countries?yesterday&sort')
+    API.getListCountries()
       .then((response) => {
         const data = response.data
         this.setState({
@@ -122,7 +122,7 @@ class App extends Component {
         isLoading: true,
       },
     })
-    Axios.get('https://corona.lmao.ninja/v2/historical/all')
+    API.getChartGlobal()
       .then((response) => {
         const chartGlobal = response.data
         const keyChart = Object.keys(chartGlobal.cases).map(
@@ -162,11 +162,7 @@ class App extends Component {
         isLoading: true,
       },
     })
-    Axios.get(
-      `https://corona.lmao.ninja/v2/historical/${
-        iso ? iso : 'indonesia'
-      }?lastdays=all`,
-    )
+    API.getChartCountry(iso)
       .then((response) => {
         const chartGlobal = response.data.timeline
         const keyChart = Object.keys(chartGlobal.cases).map(
@@ -207,11 +203,7 @@ class App extends Component {
         isLoading: true,
       },
     })
-    Axios.get(
-      `https://corona.lmao.ninja/v2/countries/${
-        iso ? iso : 'ID'
-      }?yesterday=false&strict=true&query`,
-    )
+    API.getDetailCountry(iso)
       .then((response) => {
         const detail = response.data
         this.setState({
@@ -244,7 +236,7 @@ class App extends Component {
         isLoading: true,
       },
     })
-    Axios.get('https://covid19.mathdro.id/api/countries')
+    API.getAllNameCountries()
       .then((response) => {
         const resposeCountry = response.data.countries
         const newReponse = []
@@ -277,9 +269,7 @@ class App extends Component {
         isLoading: true,
       },
     })
-    Axios.get(
-      'https://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi',
-    )
+    API.getProvinsiId()
       .then((response) => {
         this.setState({
           dataProv: {

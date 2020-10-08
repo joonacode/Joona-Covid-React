@@ -18,13 +18,19 @@ const MainHeader = ({ totalCase, recovered, death, isLoading, lastUpdate }) => {
             <div className='row'>
               <div className='col-lg-5 col-md-4 image-header-section'>
                 <h1 className='header-title text-center d-none title-image mb-5'>
-                  Bantu Mencegah Penyebaran Dengan Tetap Diam Dirumah
+                  Lindungi Diri Anda Dari Virus Dengan
+                  <span className='mb-0'> Menggunakan Masker, </span>
+                  <span className='mb-0'> Cuci Tangan & </span>
+                  <span className='mb-0'> Jaga Jarak Aman </span>
                 </h1>
                 <ImageHeader />
               </div>
               <div className='col-lg-7 pl-5 col-md-8' id='right-head'>
                 <h1 className='header-title header-title-right'>
-                  Bantu Mencegah Penyebaran Dengan Tetap Diam Dirumah
+                  Lindungi Diri Anda Dari Virus Dengan
+                  <span className='mb-0'> Menggunakan Masker, </span>
+                  <span className='mb-0'> Cuci Tangan & </span>
+                  <span className='mb-0'> Jaga Jarak Aman </span>
                 </h1>
                 <div className='mt-5 text-white'>
                   <div className='row '>

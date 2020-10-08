@@ -88,7 +88,7 @@ function MainChart({ cases, recovered, deaths, isLoading, keyChart, title }) {
                 {' (Kumulatif)'}
               </span>
             </p>
-            <Line data={data} options={options} />
+            <Line data={data} height={200} options={options} />
           </div>
         )}
       </div>

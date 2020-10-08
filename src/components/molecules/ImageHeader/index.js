@@ -22,8 +22,9 @@ function ImageHeader() {
       <img
         src={Virus1}
         alt='imageCorona'
-        className='img-fluid img-virus virus1 animate-virus1'
+        className='img-fluid cursor-pointer img-virus virus1 animate-virus1'
       />
+
       <img
         src={Virus2}
         alt='imageCorona'
