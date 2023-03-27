@@ -342,10 +342,8 @@ class App extends Component {
     this.fetchWorldCases()
     this.fetchChartGlobal()
     this.fetchChartCountry()
-    this.fetchAllCountries()
     this.fetchDetailCountry()
     this.fetchAllDataCountries()
-    this.fetchProvinsiId()
   }
 
   render() {
@@ -466,27 +464,7 @@ class App extends Component {
                 </div>
               </div>
             </div>
-            <div className='col-md-12 mt-4 shadow-sm py-3'>
-              <h5 className='text-semi mb-3'>Kasus di provinsi Indonesia</h5>
-              <div className='form-group'>
-                <input
-                  type='text'
-                  placeholder='Cari berdasarkan nama provinsi...'
-                  className='form-control'
-                  onChange={(e) => this.handleSearchProvincies(e)}
-                />
-              </div>
-              {this.state.dataProv.isLoading ? (
-                <div className='py-5'>
-                  <Spinner />
-                </div>
-              ) : (
-                <TableProv
-                  provincies={this.state.dataProv.allProv}
-                  isLoading={this.state.dataProv.isLoading}
-                />
-              )}
-            </div>
+            
             <div className='col-md-12 mt-5 shadow-sm py-3'>
               <h5 className='text-semi mb-3'>List negara terdampak covid-19</h5>
               <div className='form-group'>
